@@ -6,8 +6,8 @@ import java.util.Random;
  * 
  * @author
  * 
- * 		Desc:This class provides util method for geting random values base on
- *         parameter provided.
+ * 		Desc:This class provides utils method for getting random values base
+ *         on parameter provided.
  */
 public class Randomizer {
 
