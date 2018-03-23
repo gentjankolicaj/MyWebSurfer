@@ -2,13 +2,6 @@ package util;
 
 import java.util.Random;
 
-/**
- * 
- * @author
- * 
- * 		Desc:This class provides utils method for getting random values base
- *         on parameter provided.
- */
 public class Randomizer {
 
 	/**

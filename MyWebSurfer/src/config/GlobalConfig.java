@@ -2,6 +2,11 @@ package config;
 
 import util.MyBrowser;
 
+/**
+ * 
+ * @author gentjan_kolicaj
+ *
+ */
 public class GlobalConfig {
 
 	private GlobalConfig() {

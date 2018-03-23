@@ -3,11 +3,16 @@ package core;
 import org.openqa.selenium.WebDriver;
 
 import config.GlobalConfig;
-import core.pool.WebBrowserPool;
+import core.pool.ApplicationPool;
 import util.MyBrowser;
 import util.MyUtils;
 import util.User;
 
+/**
+ * 
+ * @author gentjan_kolicaj
+ *
+ */
 public class WebBrowser {
 
 	private static int browserCount = 0;
@@ -19,13 +24,13 @@ public class WebBrowser {
 		this.driver = MyUtils.initWebDriver(browser);
 		this.user = user;
 		browserCount++;
-		WebBrowserPool.addWebBrowserToPool(new Integer(browserCount), this);
+		ApplicationPool.addWebBrowser(new Integer(browserCount), this);
 	}
 
 	public WebBrowser() {
 		this.driver = MyUtils.initWebDriver(browser);
 		browserCount++;
-		WebBrowserPool.addWebBrowserToPool(new Integer(browserCount), this);
+		ApplicationPool.addWebBrowser(new Integer(browserCount), this);
 	}
 
 	public WebDriver getDriver() {

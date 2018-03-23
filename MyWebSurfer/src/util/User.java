@@ -1,5 +1,10 @@
 package util;
 
+/**
+ * 
+ * @author gentjan_kolicaj
+ *
+ */
 public class User {
 
 	private int number;

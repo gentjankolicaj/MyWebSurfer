@@ -4,7 +4,12 @@ import java.util.HashMap;
 
 import core.WebBrowser;
 
-public class WebBrowserPool {
+/**
+ * 
+ * @author gentjan_kolicaj
+ *
+ */
+public class ApplicationPool {
 
 	public static HashMap<Integer, WebBrowser> webBrowserPool = new HashMap<>();
 
@@ -12,19 +17,19 @@ public class WebBrowserPool {
 		return webBrowserPool;
 	}
 
-	public static void addWebBrowserToPool(Integer index, WebBrowser browser) {
+	public static void addWebBrowser(Integer index, WebBrowser browser) {
 		webBrowserPool.put(index, browser);
 	}
 
-	public static void removeWebBrowserFromPool(Integer index) {
+	public static void removeWebBrowser(Integer index) {
 		webBrowserPool.remove(index);
 	}
 
-	public static void replaceWebBrowserFromPool(Integer key, WebBrowser newBrowser) {
+	public static void replaceWebBrowser(Integer key, WebBrowser newBrowser) {
 		webBrowserPool.replace(key, newBrowser);
 	}
 
-	public static void clearHashMap() {
+	public static void clearMap() {
 		webBrowserPool.clear();
 	}
 

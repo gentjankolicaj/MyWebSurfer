@@ -5,6 +5,11 @@ import org.openqa.selenium.WebDriver;
 import config.GlobalConfig;
 import core.WebBrowser;
 
+/**
+ * 
+ * @author gentjan_kolicaj
+ *
+ */
 public class PrintUtils {
 
 	public static void print(Integer index) {

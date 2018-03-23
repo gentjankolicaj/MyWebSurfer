@@ -7,6 +7,11 @@ import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.opera.OperaDriver;
 
+/**
+ * 
+ * @author gentjan_kolicaj
+ *
+ */
 public class MyUtils {
 
 	public static String getDriverPath(String rootPath, MyBrowser browser) {

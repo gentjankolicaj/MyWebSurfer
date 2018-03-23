@@ -4,6 +4,11 @@ import config.GlobalConfig;
 import util.MyApplicationUtils;
 import util.MyUtils;
 
+/**
+ * 
+ * @author gentjan_kolicaj
+ *
+ */
 public class WebBrowserFactory {
 
 	private static WebBrowserFactory instance = new WebBrowserFactory();

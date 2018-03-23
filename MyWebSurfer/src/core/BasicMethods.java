@@ -2,12 +2,17 @@ package core;
 
 import org.openqa.selenium.WebDriver;
 
+/**
+ * 
+ * @author gentjan_kolicaj
+ *
+ */
 public class BasicMethods {
+
+	private static WebDriver driver;
 
 	private BasicMethods() {
 	}
-
-	private WebDriver driver;
 
 	public static void goTo(String pageUrl) {
 
@@ -20,4 +25,29 @@ public class BasicMethods {
 	public static void type(String element) {
 
 	}
+
+	public static void scrollDown(String element) {
+
+	}
+
+	public static void scrollUp(String element) {
+
+	}
+
+	public static void upload(String element) {
+
+	}
+
+	public static void download(String element) {
+
+	}
+
+	public static void record() {
+
+	}
+
+	public static void takeScreenshot() {
+
+	}
+
 }
