@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 
 /**
  * 
- * @author gentjan_kolicaj
+ * @author gentjan koliçaj
  *
  */
 public class BasicMethods {

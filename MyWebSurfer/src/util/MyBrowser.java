@@ -2,7 +2,7 @@ package util;
 
 /**
  * 
- * @author gentjan_kolicaj
+ * @author gentjan koliçaj
  *
  */
 public enum MyBrowser {

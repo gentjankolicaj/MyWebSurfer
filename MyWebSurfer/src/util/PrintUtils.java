@@ -7,7 +7,7 @@ import core.WebBrowser;
 
 /**
  * 
- * @author gentjan_kolicaj
+ * @author gentjan koliçaj
  *
  */
 public class PrintUtils {

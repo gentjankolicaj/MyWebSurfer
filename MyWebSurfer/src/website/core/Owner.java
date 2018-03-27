@@ -2,7 +2,7 @@ package website.core;
 
 /**
  * 
- * @author gentjan_kolicaj
+ * @author gentjan koliçaj
  *
  */
 public class Owner {

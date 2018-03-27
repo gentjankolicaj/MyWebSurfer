@@ -6,7 +6,7 @@ import util.MyUtils;
 
 /**
  * 
- * @author gentjan_kolicaj
+ * @author gentjan koliçaj
  *
  */
 public class WebBrowserFactory {

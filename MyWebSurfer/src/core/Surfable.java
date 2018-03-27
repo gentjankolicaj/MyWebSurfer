@@ -2,7 +2,7 @@ package core;
 
 /**
  * 
- * @author gentjan_kolicaj
+ * @author gentjan koliçaj
  *
  */
 public interface Surfable {

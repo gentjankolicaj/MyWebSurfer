@@ -9,7 +9,7 @@ import org.openqa.selenium.opera.OperaDriver;
 
 /**
  * 
- * @author gentjan_kolicaj
+ * @author gentjan koliçaj
  *
  */
 public class MyUtils {

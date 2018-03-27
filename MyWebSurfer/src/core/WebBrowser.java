@@ -10,7 +10,7 @@ import util.User;
 
 /**
  * 
- * @author gentjan_kolicaj
+ * @author gentjan koliçaj
  *
  */
 public class WebBrowser {

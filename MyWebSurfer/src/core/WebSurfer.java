@@ -5,7 +5,7 @@ import website.core.WebSite;
 
 /**
  * 
- * @author gentjan_kolicaj
+ * @author gentjan koliçaj
  *
  */
 public class WebSurfer extends AbstractWebSurfer implements Surfable {

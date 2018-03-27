@@ -5,7 +5,7 @@ import website.core.WebSite;
 
 /**
  * 
- * @author gentjan_kolicaj
+ * @author gentjan koliçaj
  *
  */
 public abstract class AbstractWebSurfer implements Actionable {
