@@ -1,0 +1,3 @@
+I order for the project to work the specific browser you must download the appropriate WebDriver for the browser(these drivers might be old because I have dowloaded them when I created the project).
+You can download them in the below link ,and you must put drivers into package com.drivers.
+Link : https://www.seleniumhq.org/
