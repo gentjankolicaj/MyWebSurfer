@@ -92,7 +92,7 @@ public class PropertiesDetector {
 	
 	
 	public OSProperties getOSProperties() {
-		return new OSProperties(osName,osVersion,osArchitecture,getOSUserProperties(),getJavaProperties());
+		return new OSProperties(osName,osVersion,osArchitecture);
 	}
 	
 
