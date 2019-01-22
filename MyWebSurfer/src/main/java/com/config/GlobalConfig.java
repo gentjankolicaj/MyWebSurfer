@@ -1,6 +1,6 @@
 package com.config;
 
-import com.util.MyBrowser;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 
@@ -9,16 +9,25 @@ import com.util.MyBrowser;
  */
 public class GlobalConfig {
 
-	private GlobalConfig() {
-	}
-
-	public static final MyBrowser BROWSER = MyBrowser.FIREFOX;
-
-	public static final int TIMEOUT = 1000;
-	public static final int TOTAL_BROWSERS = 3;
-
-	public static final String rootDriverPath = "C://BrowserDrivers//";
-	public static final String password = "init";
-
-	public static final boolean PRINT_LOGS = true;
+	
+	public static final String DRIVERS_PATH= "C:\\WebDrivers";
+    
+	
+	//Time unit config 
+	public static final TimeUnit TIME_UNIT=TimeUnit.SECONDS;
+	
+	//Chrome config
+	public static final int C_TIMEOUT=5000;
+	
+	
+	//Firefox config
+	public static final int F_TIMEOUT=5000;
+	
+	
+	//Edge config
+	public static final int E_TIMEOUT=5000;
+	
+	//HtmlUnit config
+	public static final int H_TIMEOUT=5000;
+	
 }

@@ -2,7 +2,7 @@ package com.core.pool;
 
 import java.util.HashMap;
 
-import com.core.WebBrowser;
+import com.core.webbrowser.WebBrowser;
 
 /**
  * 
