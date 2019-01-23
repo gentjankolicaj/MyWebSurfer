@@ -12,6 +12,7 @@ public class PropertiesDetector {
 	private static String  osName;
 	private static String osVersion;
 	private static String osArchitecture;
+	private static String osFileSeparator;
 	
 	//User related members
 	private static String userName;
@@ -41,6 +42,7 @@ public class PropertiesDetector {
 		osName = System.getProperty("os.name");
 		osVersion = System.getProperty("os.version");
 		osArchitecture = System.getProperty("os.arch");
+		osFileSeparator=System.getProperty("file.separator");
 
 		// OS user properties
 		userWorkDir = System.getProperty("user.dir");
@@ -92,7 +94,7 @@ public class PropertiesDetector {
 	
 	
 	public OSProperties getOSProperties() {
-		return new OSProperties(osName,osVersion,osArchitecture);
+		return new OSProperties(osName,osVersion,osArchitecture,osFileSeparator);
 	}
 	
 
