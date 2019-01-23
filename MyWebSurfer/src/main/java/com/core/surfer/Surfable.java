@@ -2,7 +2,12 @@ package com.core.surfer;
 
 import java.util.List;
 
-public interface Surfable<I,O> {
+/**
+ * 
+ * @author gentjan koliçaj
+ *
+ */
+public interface Surfable<O> {
 
-	public abstract List<O> surf(I input) throws Exception;
+	public abstract List<O> surf() throws Exception;
 }

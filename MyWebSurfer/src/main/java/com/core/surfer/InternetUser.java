@@ -3,6 +3,7 @@ package com.core.surfer;
 import java.util.List;
 
 import com.core.webbrowser.AbstractWebBrowser;
+import com.core.webbrowser.WebBrowser;
 import com.core.website.AbstractWebSite;
 
 /**
@@ -10,117 +11,61 @@ import com.core.website.AbstractWebSite;
  * @author gentjan koliçaj
  *
  */
-public class User extends WebSurfer<User>{
-	
-	private String id;
-	private String firstName;
-	private String lastName;
-	private String email;
-	private String password;
-	private String city;
-	private String country;
-	
-	public User() {
+public class InternetUser extends WebSurfer {
+
+	private UserInfo userInfo;
+	private List<WebBrowser> webBrowsers;
+
+	public InternetUser() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	
-	public User(String id, String firstName, String lastName, String email, String password, String city,
-			String country) {
+
+	public InternetUser(UserInfo userInfo, List<WebBrowser> webBrowsers) {
 		super();
-		this.id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
-		this.password = password;
-		this.city = city;
-		this.country = country;
+		this.userInfo = userInfo;
+		this.webBrowsers = webBrowsers;
 	}
 
-	public String getId() {
-		return id;
+	public UserInfo getUserInfo() {
+		return userInfo;
 	}
 
-
-	public void setId(String id) {
-		this.id = id;
+	public void setUserInfo(UserInfo userInfo) {
+		this.userInfo = userInfo;
 	}
 
-
-	public String getFirstName() {
-		return firstName;
+	public List<WebBrowser> getWebBrowsers() {
+		return webBrowsers;
 	}
 
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setWebBrowsers(List<WebBrowser> webBrowsers) {
+		this.webBrowsers = webBrowsers;
 	}
 
-
-	public String getLastName() {
-		return lastName;
+	public List<Object> getSurferInfo() {
+		if (userInfo != null)
+			return userInfo.getSurferInfo();
+		else
+			return null;
 	}
-
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-
-	public String getEmail() {
-		return email;
-	}
-
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-
-	public String getPassword() {
-		return password;
-	}
-
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-
-	public String getCity() {
-		return city;
-	}
-
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-
-	public String getCountry() {
-		return country;
-	}
-
-
-	public void setCountry(String country) {
-		this.country = country;
-	}
-
-	
 
 	@Override
-	public List<SurfResult> surf(AbstractWebSite input) throws Exception {
+	public List<SurfResult> surf() throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 	@Override
-	public User useBrowsers(AbstractWebBrowser... browsers) {
+	public List<AbstractWebBrowser> setBrowsers(List<AbstractWebBrowser> browsers) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	
 
+	@Override
+	public AbstractWebSite setWebSite(AbstractWebSite abstractWebSite) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
