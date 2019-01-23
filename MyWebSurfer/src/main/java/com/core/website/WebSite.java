@@ -1,5 +1,7 @@
 package com.core.website;
 
+import java.util.List;
+
 /**
  * 
  * @author gentjan koliçaj
@@ -7,24 +9,26 @@ package com.core.website;
  */
 public class WebSite extends AbstractWebSite {
 
-	/**
-	 * 
-	 */
+	protected List<WebPage> webPages;
+
 	public WebSite() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @param server
-	 * @param port
-	 * @param region
-	 * @param location
-	 * @param owner
-	 */
-	public WebSite(String server, int port) {
-		super(server, port);
+	public WebSite(String server, int port, String baseUrl, List<String> subDirectories) {
+		super(server, port, baseUrl, subDirectories);
 		// TODO Auto-generated constructor stub
 	}
+
+	public List<WebPage> getWebPages() {
+		return webPages;
+	}
+
+	public void setWebPages(List<WebPage> webPages) {
+		this.webPages = webPages;
+	}
+	
+
 
 }

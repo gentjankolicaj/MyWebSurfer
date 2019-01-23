@@ -34,7 +34,8 @@ public class GlobalConfig {
 	
 	
 	//Config for saving surfing results
-	public static final boolean REPORT_SURF_RESULTS=true;
-	public static final ReportFileType REPORT_FILE_TYPE=ReportFileType.XLSX;
+	public static boolean SaveSurfResults=true;
+	public static ReportFileType ReportFile=ReportFileType.XLSX;
+	public static String sheetName = "report_sheet";
 	
 }
