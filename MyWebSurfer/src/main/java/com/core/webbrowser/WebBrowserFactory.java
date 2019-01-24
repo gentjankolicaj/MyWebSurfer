@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.openqa.selenium.WebDriver;
 
+import com.core.pool.WebBrowserMap;
 import com.util.DriverUtils;
 
 /**
@@ -14,7 +15,8 @@ import com.util.DriverUtils;
  */
 public class WebBrowserFactory {
 
-
+    private static int webBrowserKey=0;
+    
 	private WebBrowserFactory() {
 
 	}
@@ -26,6 +28,7 @@ public class WebBrowserFactory {
 			WebDriver driver=DriverUtils.initWebDriver(browserTypes[i]);
 			WebBrowser browser=new WebBrowser(driver,browserTypes[i]);
 			browsersArray[i]=browser;
+			WebBrowserMap.addWebBrowser(new Integer(i), browser); //saves reference to a static HashMap
 			
 		}
 		return browsersArray;
@@ -35,10 +38,11 @@ public class WebBrowserFactory {
 	
     public static List<WebBrowser> getBrowsers(List<MyBrowserType> browserTypes) {
 		List<WebBrowser> browsersList=new ArrayList<>(browserTypes.size());
-		for(MyBrowserType var:browserTypes) {
-			WebDriver driver=DriverUtils.initWebDriver(var);
-			WebBrowser browser=new WebBrowser(driver,var);
+		for(int i=0;i<browserTypes.size();i++) {
+			WebDriver driver=DriverUtils.initWebDriver(browserTypes.get(i));
+			WebBrowser browser=new WebBrowser(driver,browserTypes.get(i));
 			browsersList.add(browser);
+			WebBrowserMap.addWebBrowser(new Integer(i), browser); //saves reference to a static HashMap
 		}
 		return browsersList;
 	}
@@ -47,6 +51,8 @@ public class WebBrowserFactory {
     public static WebBrowser getBrowser(MyBrowserType browserType) {
     	WebDriver driver=DriverUtils.initWebDriver(browserType);
 		WebBrowser browser=new WebBrowser(driver,browserType);
+		WebBrowserMap.addWebBrowser(new Integer(webBrowserKey), browser);
+		webBrowserKey++;
 		return browser;
     }
     

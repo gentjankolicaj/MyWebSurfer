@@ -10,4 +10,5 @@ import java.util.List;
 public interface Surfable<O> {
 
 	public abstract List<O> surf() throws Exception;
+	
 }

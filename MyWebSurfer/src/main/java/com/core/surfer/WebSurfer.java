@@ -14,6 +14,7 @@ public  abstract class WebSurfer implements Surfable<SurfResult> {
 	
 	
 	public abstract List<AbstractWebBrowser> setBrowsers(List<AbstractWebBrowser> browsers) throws Exception;
+	public abstract AbstractWebBrowser[] setBrowsers(AbstractWebBrowser[] browsers) throws Exception;
 	
 	public abstract AbstractWebSite setWebSite(AbstractWebSite abstractWebSite) throws Exception;
 

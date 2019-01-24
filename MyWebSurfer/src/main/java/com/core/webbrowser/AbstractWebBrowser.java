@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 public abstract class AbstractWebBrowser {
 	
 	protected WebDriver webDriver;
-    private MyBrowserType browserType;
+    protected MyBrowserType browserType;
     
 	public AbstractWebBrowser(WebDriver webDriver, MyBrowserType browserType) {
 		super();
@@ -13,6 +13,16 @@ public abstract class AbstractWebBrowser {
 		this.browserType = browserType;
 	}
 
+	public WebDriver getWebDriver() {
+		return webDriver;
+	}
+
+	public MyBrowserType getBrowserType() {
+		return browserType;
+	}
+
+	
+	
     
 
 }
