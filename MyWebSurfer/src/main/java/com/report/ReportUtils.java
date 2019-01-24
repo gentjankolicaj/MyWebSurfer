@@ -1,9 +1,11 @@
 package com.report;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.util.List;
 
+import org.apache.maven.shared.utils.StringUtils;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -20,7 +22,7 @@ public class ReportUtils {
 	private static String homeDirectory = "";
 	private static String fileSeparator = "";
 	private static OutputStream outputStream;
-	private static int fileNumber=0;
+	private static int fileNumber = 0;
 
 	static {
 		homeDirectory = System.getProperty("user.home");
@@ -31,9 +33,11 @@ public class ReportUtils {
 	public static void saveResults(List<SurfResult> list, String fileName) throws Exception {
 		if (GlobalConfig.SaveSurfResults) {
 			if (GlobalConfig.ReportFile.equals(ReportFileType.XLSX)) {
+
 				saveResultsToXlsx(list, fileName, GlobalConfig.ReportFile);
 
 			} else if (GlobalConfig.ReportFile.equals(ReportFileType.XLS)) {
+
 				saveResultsToXls(list, fileName, GlobalConfig.ReportFile);
 			}
 		}
@@ -42,7 +46,15 @@ public class ReportUtils {
 
 	private static void saveResultsToXlsx(List<SurfResult> list, String fileName, ReportFileType fileType)
 			throws Exception {
-		setOutputStream(buildFilePath(fileName, fileType));
+
+		String filePath = buildFilePath(fileName, ReportFileType.XLSX);
+
+		if (existsSameFile(filePath)) {
+			filePath = buildFilePath(fileName, ReportFileType.XLSX);
+			outputStream = new FileOutputStream(filePath);
+		} else
+			outputStream = new FileOutputStream(filePath);
+
 		XSSFWorkbook workbook = new XSSFWorkbook();
 
 		XSSFSheet sheet = workbook.createSheet(GlobalConfig.sheetName);
@@ -64,13 +76,23 @@ public class ReportUtils {
 
 		workbook.write(outputStream);
 		workbook.close();
+
 		outputStream.flush();
+		outputStream.close();
 
 	}
 
 	private static void saveResultsToXls(List<SurfResult> list, String fileName, ReportFileType fileType)
 			throws Exception {
-		setOutputStream(buildFilePath(fileName, fileType));
+
+		String filePath = buildFilePath(fileName, ReportFileType.XLS);
+
+		if (existsSameFile(filePath)) {
+			filePath = buildFilePath(fileName, ReportFileType.XLS);
+			outputStream = new FileOutputStream(filePath);
+		} else
+			outputStream = new FileOutputStream(filePath);
+
 		Workbook workbook = WorkbookFactory.create(false); // False argument results in creation of HSSFWorkbook object
 
 		Sheet sheet = workbook.createSheet(GlobalConfig.sheetName);
@@ -92,25 +114,31 @@ public class ReportUtils {
 
 		workbook.write(outputStream);
 		workbook.close();
+
 		outputStream.flush();
-
-	}
-
-	private static void setOutputStream(String file) throws Exception {
-		if (outputStream != null) {
-			outputStream.flush();
-			outputStream.close();
-			outputStream = new FileOutputStream(file);
-		}
-		else
-
-			outputStream = new FileOutputStream(file);
+		outputStream.close();
 
 	}
 
 	private static String buildFilePath(String fileName, ReportFileType fileType) {
-		fileNumber++;
-		return homeDirectory + fileSeparator + fileName + "_"+fileNumber+"." + fileType.getFileExtension();
+
+		return homeDirectory + fileSeparator + fileName + "_" + fileNumber + "." + fileType.getFileExtension();
+
+	}
+
+	private static boolean existsSameFile(String filePath) {
+		File fileObject = new File(filePath);
+		if (fileObject.exists()) {
+			String name = fileObject.getName().trim();
+			String fileName = StringUtils.substring(name, 0, name.indexOf("."));
+			String number = StringUtils.substring(fileName, fileName.indexOf("_") + 1, fileName.length());
+			fileNumber = Integer.valueOf(number) + 1;
+			return true;
+		} else {
+			fileNumber++;
+			return false;
+		}
+
 	}
 
 }

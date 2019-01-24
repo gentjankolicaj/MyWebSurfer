@@ -22,6 +22,9 @@ public class ReportUtilsTest {
 				new SurfResult("age", "24"), new SurfResult("code", "007"));
 
 		ReportUtils.saveResults(list, "testFile");
+		ReportUtils.saveResults(list, "testFile");
+		ReportUtils.saveResults(list, "testFile");
+		ReportUtils.saveResults(list, "testFile");
 
 	}
 
@@ -31,6 +34,9 @@ public class ReportUtilsTest {
 		List<SurfResult> list = Arrays.asList(new SurfResult("firstName", "jone"), new SurfResult("Lastname", "doe"),
 				new SurfResult("age", "23"), new SurfResult("code", "006"));
 
+		ReportUtils.saveResults(list, "testFile");
+		ReportUtils.saveResults(list, "testFile");
+		ReportUtils.saveResults(list, "testFile");
 		ReportUtils.saveResults(list, "testFile");
 
 	}
