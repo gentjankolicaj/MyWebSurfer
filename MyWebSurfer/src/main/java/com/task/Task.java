@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Task {
 	
-	private List<Step> steps;
+	private List<SubTask> steps;
 	
 	
 	public Task() {
@@ -15,7 +15,7 @@ public class Task {
 
 
 
-	public Task(List<Step> steps) {
+	public Task(List<SubTask> steps) {
 		super();
 		this.steps = steps;
 	}
@@ -23,14 +23,14 @@ public class Task {
 
 
 
-	public void addStep(Step step) {
+	public void addStep(SubTask step) {
 		this.steps.add(step);
 	}
 	
 	
 	public void finish() throws Exception{
-		for(Step var:steps) {
-			var.perform();
+		for(SubTask var:steps) {
+			var.complete();
 		}
 		
 	}
