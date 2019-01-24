@@ -1,5 +1,7 @@
 package com.util;
 
+import java.io.IOException;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -70,6 +72,24 @@ public class DriverUtils {
 		String path = "";
 		path = GlobalConfig.DRIVERS_PATH + "\\" + driverType.getDriverExe();
 		return path;
+	}
+	
+	
+	public static void killDrivers() {
+		Runtime.getRuntime().addShutdownHook(new Thread() {
+			public void run() {
+
+				try {
+					Runtime.getRuntime().exec("TASKKILL /F /IM " + DriverType.CHROME_DRIVER.getDriverExe());
+					Runtime.getRuntime().exec("TASKKILL /F /IM " + DriverType.EDGE_DRIVER.getDriverExe());
+					Runtime.getRuntime().exec("TASKKILL /F /IM " + DriverType.GECKO_DRIVER.getDriverExe());
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+			}
+		});
 	}
 
 }
