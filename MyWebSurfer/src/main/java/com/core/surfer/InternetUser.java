@@ -73,13 +73,9 @@ public class InternetUser extends WebSurfer {
 
 	@Override
 	public List<SurfResult> surf() throws Exception {
-		if(logic instanceof SurfLogic_1) {
 			
 		return (List<SurfResult>) logic.apply(userInfo,webBrowsers,abstractWebSite);
 	
-		}else {
-			return null;
-		}
 	}
 
 
