@@ -1,6 +1,7 @@
 package com.report;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.util.List;
@@ -47,13 +48,7 @@ public class ReportUtils {
 	private static void saveResultsToXlsx(List<SurfResult> list, String fileName, ReportFileType fileType)
 			throws Exception {
 
-		String filePath = buildFilePath(fileName, ReportFileType.XLSX);
-
-		if (existsSameFile(filePath)) {
-			filePath = buildFilePath(fileName, ReportFileType.XLSX);
-			outputStream = new FileOutputStream(filePath);
-		} else
-			outputStream = new FileOutputStream(filePath);
+		handleFileCollision(fileName,fileType);
 
 		XSSFWorkbook workbook = new XSSFWorkbook();
 
@@ -85,13 +80,7 @@ public class ReportUtils {
 	private static void saveResultsToXls(List<SurfResult> list, String fileName, ReportFileType fileType)
 			throws Exception {
 
-		String filePath = buildFilePath(fileName, ReportFileType.XLS);
-
-		if (existsSameFile(filePath)) {
-			filePath = buildFilePath(fileName, ReportFileType.XLS);
-			outputStream = new FileOutputStream(filePath);
-		} else
-			outputStream = new FileOutputStream(filePath);
+		handleFileCollision(fileName,fileType);
 
 		Workbook workbook = WorkbookFactory.create(false); // False argument results in creation of HSSFWorkbook object
 
@@ -121,24 +110,26 @@ public class ReportUtils {
 	}
 
 	private static String buildFilePath(String fileName, ReportFileType fileType) {
-
 		return homeDirectory + fileSeparator + fileName + "_" + fileNumber + "." + fileType.getFileExtension();
-
 	}
 
-	private static boolean existsSameFile(String filePath) {
-		File fileObject = new File(filePath);
-		if (fileObject.exists()) {
-			String name = fileObject.getName().trim();
-			String fileName = StringUtils.substring(name, 0, name.indexOf("."));
-			String number = StringUtils.substring(fileName, fileName.indexOf("_") + 1, fileName.length());
+
+	
+	private static void handleFileCollision(String fileName,ReportFileType fileType) throws FileNotFoundException,Exception {
+		String filePath=buildFilePath(fileName,fileType);
+		File fileObject=new File(filePath);
+		while(fileObject.exists()) {
+			String fullFileName = fileObject.getName().trim();
+			String name = StringUtils.substring(fullFileName, 0, fullFileName.indexOf("."));
+			String number = StringUtils.substring(name, name.indexOf("_") + 1, name.length());
 			fileNumber = Integer.valueOf(number) + 1;
-			return true;
-		} else {
-			fileNumber++;
-			return false;
+			filePath=buildFilePath(fileName,fileType);
+			fileObject=new File(filePath);	
 		}
-
+		outputStream=new FileOutputStream(filePath);
+		
 	}
+	
+	
 
 }
