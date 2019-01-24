@@ -12,6 +12,7 @@ import com.core.webbrowser.WebBrowser;
 import com.core.webbrowser.WebBrowserFactory;
 import com.core.webbrowser.WebBrowserUtils;
 import com.core.website.WebSite;
+import com.report.ReportFileType;
 import com.report.ReportUtils;
 import com.task.SubTask;
 import com.task.Task;
@@ -64,7 +65,7 @@ public class Main {
 				
 				List<SurfResult> surfResult=user.surf();
 				
-				ReportUtils.saveResults(surfResult, "SurfReport");	
+				ReportUtils.saveResults(surfResult, "SurfReport");	 //saves results in xlsx file in user's home directory
 				
 			}
 

@@ -73,9 +73,7 @@ public class InternetUser extends WebSurfer {
 
 	@Override
 	public List<SurfResult> surf() throws Exception {
-			
 		return (List<SurfResult>) logic.apply(userInfo,webBrowsers,abstractWebSite);
-	
 	}
 
 

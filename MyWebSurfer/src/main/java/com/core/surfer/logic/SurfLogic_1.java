@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.core.exception.WebBrowserException;
+import com.core.os.JavaProperties;
+import com.core.os.OSProperties;
+import com.core.os.PropertiesDetector;
 import com.core.surfer.SurfResult;
 import com.core.surfer.UserInfo;
 import com.core.webbrowser.AbstractWebBrowser;
@@ -26,8 +29,16 @@ public class SurfLogic_1 implements Logic<SurfResult>{
 	  this.webSite=(AbstractWebSite) objects[2];
 	  
 	  List<SurfResult> resultList=checkBrowsers();
+	  
+	  addOSDetails(resultList);
+	  
+	  addJavaDetails(resultList);
 	 
-	  prepareUserDetails(resultList);
+	  addUserDetails(resultList);
+	  
+	  //just for more user friendly looking
+	  SurfResult surfDetailsTitle=new SurfResult("Surfing details :","");
+	  resultList.add(surfDetailsTitle);
 	  
 	  goToBaseUrl(resultList);
 	  
@@ -37,17 +48,56 @@ public class SurfLogic_1 implements Logic<SurfResult>{
 	  return resultList;
 	}
 
-	
-	private void prepareUserDetails(List<SurfResult> resultList) {
-		if(userInfo!=null) {
-			SurfResult id=new SurfResult("User id",userInfo.getId());
-			SurfResult firstName=new SurfResult("User firstName",userInfo.getFirstName());
-			SurfResult lastName=new SurfResult("User lastName",userInfo.getLastName());
-			SurfResult email=new SurfResult("User email :",userInfo.getEmail());
-			SurfResult password=new SurfResult("User password :",userInfo.getPassword());
-			SurfResult city=new SurfResult("User city :",userInfo.getCity());
-			SurfResult country=new SurfResult("User country :",userInfo.getCountry());
+	private void addJavaDetails(List<SurfResult> resultList) {
+		PropertiesDetector detector=PropertiesDetector.getInstance();
+		JavaProperties javaProp=detector.getJavaProperties();
+		if(javaProp!=null) {
+			SurfResult title=new SurfResult("JAVA Details :","");
+			SurfResult name=new SurfResult("Name",javaProp.getHome());
+			SurfResult version=new SurfResult("Version",javaProp.getVersion());
+			SurfResult vendor=new SurfResult("Vendor",javaProp.getVendor());
 			
+			resultList.add(title);
+			resultList.add(name);
+			resultList.add(version);
+			resultList.add(vendor);
+			
+		}
+		SurfResult empty=new SurfResult();
+		resultList.add(empty);
+		
+	}
+
+	private void addOSDetails(List<SurfResult> resultList) {
+		PropertiesDetector detector=PropertiesDetector.getInstance();
+		OSProperties osProp=detector.getOSProperties();
+		if(osProp!=null) {
+			SurfResult title=new SurfResult("OS Details :","");
+			SurfResult name=new SurfResult("Name",osProp.getName());
+			SurfResult version=new SurfResult("Version",osProp.getVersion());
+			SurfResult arch=new SurfResult("Architecture",osProp.getArchitecture());
+			
+			resultList.add(title);
+			resultList.add(name);
+			resultList.add(version);
+			resultList.add(arch);
+		}
+		SurfResult empty=new SurfResult();
+		resultList.add(empty);
+	}
+	
+	private void addUserDetails(List<SurfResult> resultList) {
+		if(userInfo!=null) {
+			SurfResult title=new SurfResult("User details :","");
+			SurfResult id=new SurfResult("Id",userInfo.getId());
+			SurfResult firstName=new SurfResult("FirstName",userInfo.getFirstName());
+			SurfResult lastName=new SurfResult("LastName",userInfo.getLastName());
+			SurfResult email=new SurfResult("Email",userInfo.getEmail());
+			SurfResult password=new SurfResult("Password",userInfo.getPassword());
+			SurfResult city=new SurfResult("City",userInfo.getCity());
+			SurfResult country=new SurfResult("Country",userInfo.getCountry());
+			
+			resultList.add(title);
 			resultList.add(id);
 			resultList.add(firstName);
 			resultList.add(lastName);
