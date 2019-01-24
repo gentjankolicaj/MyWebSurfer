@@ -36,6 +36,6 @@ public class GlobalConfig {
 	//Config for saving surfing results
 	public static boolean SaveSurfResults=true;
 	public static ReportFileType ReportFile=ReportFileType.XLSX;
-	public static String sheetName = "report_sheet";
+	public static String sheetName = "report_sheet";//default sheet name for every xls,xlsx file.
 	
 }

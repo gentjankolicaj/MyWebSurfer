@@ -8,6 +8,8 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.util.DriverUtils;
+
 public class WebBrowserFactoryTest {
 
 	private String testUrl="https://www.google.com";
@@ -22,6 +24,8 @@ public class WebBrowserFactoryTest {
 		for(WebBrowser browser:array) {
 			browser.webDriver.get(testUrl);
 		}
+		WebBrowserUtils.quit();
+	    DriverUtils.killDrivers();
 	}
 
 	@Test
@@ -32,12 +36,18 @@ public class WebBrowserFactoryTest {
 		for(WebBrowser browser:browserList) {
 			browser.webDriver.get(testUrl2);
 		}
+		
+		WebBrowserUtils.quit();
+	    DriverUtils.killDrivers();
 	}
 
 	@Test
 	public void testGetBrowser() {
 		WebBrowser browser=WebBrowserFactory.getBrowser(MyBrowserType.CHROME);
 	    browser.webDriver.get(testUrl);
+	    
+	    WebBrowserUtils.quit();
+	    DriverUtils.killDrivers();
 	}
 
 }
