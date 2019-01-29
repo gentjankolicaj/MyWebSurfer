@@ -10,6 +10,9 @@ import com.report.ReportFileType;
  *
  */
 public class GlobalConfig {
+	
+	public static String homeDirectory =System.getProperty("user.home");
+	public static String fileSeparator = System.getProperty("file.separator");
 
 	//Config for webDrivers exes
 	public static final String DRIVERS_PATH= "C:\\WebDrivers";

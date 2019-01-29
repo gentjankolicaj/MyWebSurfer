@@ -20,16 +20,9 @@ import com.core.surfer.SurfResult;
 
 public class ReportUtils {
 
-	private static String homeDirectory = "";
-	private static String fileSeparator = "";
 	private static OutputStream outputStream;
 	private static int fileNumber = 0;
 
-	static {
-		homeDirectory = System.getProperty("user.home");
-		fileSeparator = System.getProperty("file.separator");
-
-	}
 
 	public static void saveResults(List<SurfResult> list, String fileName) throws Exception {
 		if (GlobalConfig.SaveSurfResults) {
@@ -110,7 +103,7 @@ public class ReportUtils {
 	}
 
 	private static String buildFilePath(String fileName, ReportFileType fileType) {
-		return homeDirectory + fileSeparator + fileName + "_" + fileNumber + "." + fileType.getFileExtension();
+		return GlobalConfig.homeDirectory + GlobalConfig.fileSeparator + fileName + "_" + fileNumber + "." + fileType.getFileExtension();
 	}
 
 
@@ -121,7 +114,7 @@ public class ReportUtils {
 		while(fileObject.exists()) {
 			String fullFileName = fileObject.getName().trim();
 			String name = StringUtils.substring(fullFileName, 0, fullFileName.indexOf("."));
-			String number = StringUtils.substring(name, name.indexOf("_") + 1, name.length());
+			String number = StringUtils.substring(name, name.lastIndexOf("_") + 1, name.length());
 			fileNumber = Integer.valueOf(number) + 1;
 			filePath=buildFilePath(fileName,fileType);
 			fileObject=new File(filePath);	
